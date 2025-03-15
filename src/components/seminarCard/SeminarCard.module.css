@@ -1,0 +1,50 @@
+.seminarCard {
+    box-sizing: border-box;
+    margin: 20px 0;
+    padding: 0;
+    box-shadow: 0px 0px 5px grey;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: repeat(6, auto);
+    gap: 10px;
+}
+
+.seminarCard__item {
+    box-sizing: border-box;
+    padding: 10px ;
+    display: flex;
+    justify-content: center;
+}
+
+.text {
+    display: flex;
+}
+
+.desc {
+    display: flex;
+}
+
+.date {
+    display: flex;
+}
+
+.time {
+    display: flex;
+}
+
+.photo {
+    grid-row-start: 1;
+    grid-row-end: 5;
+}
+
+.btnDelete {
+    padding: 10px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.btnEdit {
+    padding: 10px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
