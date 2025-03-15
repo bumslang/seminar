@@ -15,17 +15,17 @@ const SeminarList = () => {
 
     async function getSeminars() {
         try {
-            let response = await fetch('http://localhost:3001/seminars/')
+            let response = await fetch('http://localhost:3001/seminars/'); //запрос на список семинаров
             if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
+                throw new Error(`HTTP error! Status: ${response.status}`); //если ошибка пробрасываем ошибку и попадаем в catch
             }
-            let data = await response.json();
-            setSeminarsArr(data)
+            let data = await response.json(); //получаем список семинаров
+            setSeminarsArr(data); //массив с семинарами устанавливаем в seminarArr
         } catch (error) {
             console.error(error)
         }
     }
-
+//рендерим список семинаров
     return <ul className={cl.seminar}>
         {seminarsArr.map(({ id, title, description, date, time, photo }) => {
             return <SeminarCard key={id}
