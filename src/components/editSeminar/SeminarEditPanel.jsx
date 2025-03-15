@@ -3,9 +3,9 @@ import { useState } from 'react'
 import cl from './SeminarEditPanel.module.css'
 
 let SeminarEditPanel = ({ setShowEdit, id, seminarsArr, getSeminars, }) => {
-    let editObj = seminarsArr.find((obj) => obj.id == id);
+    let editObj = seminarsArr.find((obj) => obj.id == id); // получаем обьект семинара для редактирования
 
-    let [title, setTitle] = useState(editObj.title);
+    let [title, setTitle] = useState(editObj.title); // значения в полях для изменений
     let [desc, setDesc] = useState(editObj.description);
     let [date, setDate] = useState(editObj.date);
     let [time, setTime] = useState(editObj.time);
@@ -13,7 +13,7 @@ let SeminarEditPanel = ({ setShowEdit, id, seminarsArr, getSeminars, }) => {
 
     async function updateSeminar(id) {
         try {
-            let response = await fetch(`http://localhost:3001/seminars/${id}`, {
+            let response = await fetch(`http://localhost:3001/seminars/${id}`, { //отправляем изменения на сервер
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
@@ -31,8 +31,8 @@ let SeminarEditPanel = ({ setShowEdit, id, seminarsArr, getSeminars, }) => {
             if (!response.ok) {
                 throw new Error('Ошибка')
             }
-            setShowEdit(false);
-            getSeminars();
+            setShowEdit(false); // скрываем окно редактирования, если все успешно
+            getSeminars(); // обновляем разметку с обновленным семинаром
 
         } catch (error) {
             console.error('Ошибка при обновлении семинара:', error)
