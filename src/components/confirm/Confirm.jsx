@@ -4,7 +4,7 @@ const Confirm = ({ setShowConfirm, id, getSeminars }) => {
 
     async function confirmDelete(id) {
         try {
-            let deleteResponse = await fetch(`http://localhost:3001/seminars/${id}`, {
+            let deleteResponse = await fetch(`http://localhost:3001/seminars/${id}`, { //отправляем запрос на удаление семинара по id
                 method: 'DELETE',
             });
 
@@ -12,7 +12,7 @@ const Confirm = ({ setShowConfirm, id, getSeminars }) => {
                 throw new Error('Не удалось удалить семинар');
             }
 
-            getSeminars();
+            getSeminars(); // перерисовываем обновленный список семинаров
 
         } catch (error) {
             console.error('Ошибка при удалении семинара:', error);
