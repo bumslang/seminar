@@ -6,9 +6,10 @@ import SeminarEditPanel from '../editSeminar/SeminarEditPanel';
 import cl from './SeminarCard.module.css'
 
 function SeminarCard({ id, title, description, date, time, photo, setSeminarsArr, seminarsArr, getSeminars }) {
-    const [showConfirm, setShowConfirm] = useState(false);
-    const [showEdit, setShowEdit] = useState(false);
+    const [showConfirm, setShowConfirm] = useState(false); //подтверждение удаления (false-окно не видно)
+    const [showEdit, setShowEdit] = useState(false); //окно редактирования (false-окна не видно)
 
+    // возвращаем HTML разметку семинара
     return (
         <li className={cl.seminarCard}>
             <h2 className={`${cl.seminarCard__item} ${cl.text}`}>{title}</h2>
@@ -24,6 +25,7 @@ function SeminarCard({ id, title, description, date, time, photo, setSeminarsArr
             </button>
             <button onClick={() => setShowEdit(true)} className={`${cl.seminarCard__item} ${cl.btnEdit}`}>EDIT</button>
 
+            // если окна подтверждения не видно(showConfirm=false) отрисовываем компонент Confirm
             {showConfirm && (
                 <Confirm
                     setShowConfirm={setShowConfirm}
@@ -31,6 +33,7 @@ function SeminarCard({ id, title, description, date, time, photo, setSeminarsArr
                     getSeminars={getSeminars}
                 />
             )}
+            //если showEdit=true видно окно редактирования
             {showEdit && (
                 <SeminarEditPanel
                     setShowEdit={setShowEdit}
